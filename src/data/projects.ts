@@ -16,6 +16,8 @@ export interface Project {
   tech: string[]
   status: ProjectStatus
   links: ProjectLink[]
+  // Короткая заметка под описанием (видна всегда, даже когда описание свёрнуто)
+  note?: string
 }
 
 export const statusLabels: Record<ProjectStatus, string> = {
@@ -39,6 +41,7 @@ export const projects: Project[] = [
     tech: ['React', 'NestJS', 'PostgreSQL', 'Redis'],
     status: 'live',
     links: [{ label: 'Открыть магазин', href: 'https://shop.dvbstudio.ru' }],
+    note: 'Код закрыт (коммерческий шаблон), готов показать на созвоне.',
   },
   {
     id: 'dvchat',

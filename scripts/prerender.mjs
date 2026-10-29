@@ -144,7 +144,7 @@ function buildNoscript(data) {
   parts.push('<ul>')
   for (const project of data.projects) {
     const links = project.links.map((link) => `<a href="${esc(link.href)}">${esc(link.label)}</a>`).join(', ')
-    parts.push(`<li><strong>${esc(project.title)}.</strong> ${esc(project.description)}${links ? ' ' + links : ''}</li>`)
+    parts.push(`<li><strong>${esc(project.title)}.</strong> ${esc(project.description)}${project.note ? ' ' + esc(project.note) : ''}${links ? ' ' + links : ''}</li>`)
   }
   parts.push('</ul>')
   parts.push('<h3>Контакты</h3>')

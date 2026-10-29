@@ -101,6 +101,11 @@ function ProjectCard({ project, expanded, onToggle }: { project: Project; expand
         </button>
       ) : null}
 
+      {/* Заметка: видна всегда, не сворачивается вместе с описанием */}
+      {project.note ? (
+        <p className={`mt-3 text-sm italic leading-relaxed ${config.colors.text.muted} transition-colors`}>{project.note}</p>
+      ) : null}
+
       {/* Низ карточки: технологии и ссылки, прижаты вниз */}
       <div className="mt-auto pt-5">
         <div className="flex flex-wrap gap-2">
