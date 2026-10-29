@@ -30,7 +30,7 @@ export const projects: Project[] = [
     description: 'Лендинг-визитка с картой стека и проектами. Работает на собственном сервере, автодеплой (CI/CD): пуш в main — сборка и перезапуск.',
     tech: ['React', 'TypeScript', 'Tailwind', 'Docker', 'CI/CD'],
     status: 'live',
-    links: [],
+    links: [{ label: 'Исходный код', href: 'https://github.com/Godween69/dvbstudio-landing' }],
   },
   {
     id: 'shop',
