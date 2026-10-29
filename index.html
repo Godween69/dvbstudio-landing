@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Дмитрий — независимый full-stack разработчик: React, TypeScript, NestJS, PostgreSQL, Docker. Интерфейсы, API и автоматический деплой." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237c3aed'/%3E%3Ctext x='16' y='22' font-size='16' font-family='sans-serif' font-weight='700' text-anchor='middle' fill='white'%3Edv%3C/text%3E%3C/svg%3E" />
+    <meta name="theme-color" content="#030712" />
+    <!-- Метатеги, Open Graph и структурированные данные добавляются при сборке (scripts/prerender.mjs) -->
+    <!--seo-head-->
+    <!-- Тема применяется до отрисовки, чтобы не было вспышки светлой темы -->
+    <script>
+      try {
+        document.documentElement.classList.add(localStorage.getItem('theme') === 'light' ? 'light' : 'dark')
+      } catch (e) {
+        document.documentElement.classList.add('dark')
+      }
+    </script>
+    <title>Дмитрий — Full-Stack разработчик | dvb studio</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- Текстовая версия для роботов и режима без JavaScript добавляется при сборке -->
+    <!--seo-body-->
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

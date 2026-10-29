@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Палитра светлой темы: спокойные серые оттенки вместо чисто белого.
+   Лежит здесь, а не в tailwind.config.js: правки CSS подхватываются сразу, без перезапуска Vite.
+   Тёмная тема этих классов не использует (там свои dark: классы). */
+@layer utilities {
+  /* Карточки, боковое меню, кнопки: светлее фона, но не чисто белые */
+  .bg-paper-50 { background-color: #f5f6f8; }
+  .hover\:bg-paper-50:hover { background-color: #f5f6f8; }
+  /* Фон страницы и секций (две соседние секции чуть отличаются) */
+  .bg-paper-100 { background-color: #e7e9ed; }
+  .bg-paper-200 { background-color: #dde0e6; }
+  /* Информационные плашки (не кликаются): темнее фона, чтобы не сливались с ним */
+  .bg-paper-300 { background-color: #c9cdd6; }
+  /* Теги внутри плашек, шкала уровня, линия шагов */
+  .bg-paper-400 { background-color: #b4bac6; }
+  .bg-paper-500 { background-color: #8d94a3; }
+  /* Границы карточек и кружки шкалы шагов */
+  .border-paper-300 { border-color: #c9cdd6; }
+  .border-paper-500 { border-color: #8d94a3; }
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom animations */
+@keyframes gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-30px); }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scroll {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(8px); opacity: 0; }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 15s ease infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 8s ease-in-out infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.8s ease-out forwards;
+}
+
+.animate-slide-up-delayed {
+  animation: slide-up 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-delayed {
+  animation: fade-in 1s ease-out 0.6s forwards;
+  opacity: 0;
+}
+
+.animate-scroll {
+  animation: scroll 1.5s ease-in-out infinite;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hero: фоновое свечение и частицы анимируются только через transform и opacity,
+   поэтому не вызывают перерисовку и не тормозят на телефонах */
+@keyframes hero-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(4%, -3%, 0) scale(1.08); }
+}
+
+@keyframes hero-particle {
+  0%, 100% { transform: translate3d(0, 0, 0); opacity: 0.2; }
+  50% { transform: translate3d(0, -30px, 0); opacity: 0.8; }
+}
+
+.hero-glow {
+  background:
+    radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
+  animation: hero-drift 16s ease-in-out infinite;
+  will-change: transform;
+}
+
+.hero-particle {
+  animation: hero-particle var(--dur, 4s) ease-in-out var(--delay, 0s) infinite;
+}
+
+/* Уважаем системную настройку "уменьшить движение" */
+@media (prefers-reduced-motion: reduce) {
+  .hero-glow,
+  .hero-particle {
+    animation: none;
+  }
+}
+
+/* Искорка на линии шагов «Как я работаю»: медленно бежит от шага 1 к шагу 4, затем пауза.
+   Двигается только transform (работает на видеокарте, процессор почти не нагружает).
+   Работает и при включённом «уменьшить анимацию» в системе: она медленная, тусклая и маленькая. */
+@keyframes step-spark {
+  0%   { transform: translateX(-120%); opacity: 0; }
+  3%   { opacity: 0.35; }
+  12%  { opacity: 1; }
+  22%  { opacity: 0.6; }
+  25%  { transform: translateX(320%); opacity: 0; }
+  100% { transform: translateX(320%); opacity: 0; }
+}
+.step-spark {
+  animation: step-spark 12s linear infinite;
+}

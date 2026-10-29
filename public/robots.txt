@@ -1,0 +1,6 @@
+# robots.txt: сайт открыт для всех поисковиков и роботов
+User-agent: *
+Allow: /
+
+# Карта сайта (создаётся при сборке)
+Sitemap: https://dvbstudio.ru/sitemap.xml
