@@ -73,7 +73,7 @@ const aiPoints = [
 const aiTags = ['Промпт-инжиниринг', 'ИИ-ассистенты', 'Агенты для кода', 'Ревью результата']
 
 // Что уже работает (подробности в разделе «Проекты»)
-const live = ['Сайт-визитка', 'DVMail', 'DVChat', 'Интернет-магазин']
+const live = ['Сайт-визитка', 'DVMail', 'DVChat', 'DV Cloud', 'Интернет-магазин']
 
 export function About() {
   const config = useConfig()
